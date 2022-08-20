@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { loadWeather, loadPhoto } from "../api";
+import { loadWeather, loadForecast, loadPhoto } from "../api";
 import { Wrapper } from '../styles/home';
 import SearchForm from "../components/SearchForm";
 import WeatherWrapper from "../components/WeatherWrapper";
@@ -7,6 +7,7 @@ import WeatherWrapper from "../components/WeatherWrapper";
 const HomePage = () => {
 
   const [weatherData, setWeatherData] = useState(null);
+  const [forecastData, setForecastData] = useState(null);
   const [coverPhoto, setCoverPhoto] = useState('');
   const [query, setQuery] = useState('berlin');
 
@@ -15,12 +16,19 @@ const HomePage = () => {
     setQuery(query);
     getPhoto();
     getWeather();
+    //getForecast();
     setQuery('')
   }
 
   const getWeather = () => {
     loadWeather(query).then((result) => {
       setWeatherData(result)
+    })
+  }
+
+  const getForecast = () => {
+    loadForecast(query).then((result) => {
+      setForecastData(result)
     })
   }
 
@@ -34,6 +42,7 @@ const HomePage = () => {
   useEffect(() => {
     getPhoto()
     getWeather()
+    //getForecast()
   }, [])
 
   return (
@@ -44,7 +53,7 @@ const HomePage = () => {
         <SearchForm query={ query } setQuery={ setQuery } submitHandler={ submitHandler } />
 
         { weatherData && (
-          <WeatherWrapper weatherData={ weatherData } coverPhoto={ coverPhoto } />
+          <WeatherWrapper weatherData={ weatherData } forecastData={ forecastData } coverPhoto={ coverPhoto } />
         ) }
       </section>
     </Wrapper>
