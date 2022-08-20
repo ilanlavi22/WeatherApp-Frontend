@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { loadWeather, loadForecast, loadPhoto } from "../api";
+import { loadWeather, loadPhoto } from "../api";
 import { Wrapper } from '../styles/home';
 import SearchForm from "../components/SearchForm";
 import WeatherWrapper from "../components/WeatherWrapper";
