@@ -2,7 +2,7 @@
 
 # WeatherApp
 
-## Frontnnd - React
+## Frontend - React
 
 - openweathermap api
 - unsplash api
