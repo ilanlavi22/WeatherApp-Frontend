@@ -21,22 +21,26 @@ const HomePage = () => {
   }
 
   const getWeather = () => {
-    loadWeather(query).then((result) => {
-      setWeatherData(result)
-    })
+    loadWeather(query)
+      .then((result) => {
+        setWeatherData(result)
+      })
+      .catch((err) => console.log(err.result))
   }
 
   const getForecast = () => {
-    loadForecast(query).then((result) => {
-      setForecastData(result)
-    })
+    loadForecast(query)
+      .then((result) => {
+        setForecastData(result)
+      })
+      .catch((err) => console.log(err.result))
   }
 
   const getPhoto = () => {
-    loadPhoto(query).then((result) => {
-      setCoverPhoto(result)
-      console.log(result)
-    })
+    loadPhoto(query)
+      .then((result) => {
+        setCoverPhoto(result)
+      }).catch((err) => console.log(err.result))
   }
 
   useEffect(() => {
